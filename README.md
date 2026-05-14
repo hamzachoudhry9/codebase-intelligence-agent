@@ -21,12 +21,12 @@ Large engineering organisations lose months of productivity when engineers onboa
 
 You type `"my CUDA kernel is giving an out-of-memory error"` and the agent:
 
-1. **Checks its memory** — retrieves any past session where this error was solved
-2. **Makes a plan** — decides which tools to use and in what order
-3. **Executes the plan** — searches your codebase semantically, runs code, searches the web if needed
-4. **Recovers from failures** — replans up to 2 times if a tool step fails
-5. **Synthesises an answer** — with exact file names, function names, and working code
-6. **Saves to memory** — the next time this error appears, the answer is already known
+1. **Checks its memory** : retrieves any past session where this error was solved
+2. **Makes a plan** : decides which tools to use and in what order
+3. **Executes the plan** : searches your codebase semantically, runs code, searches the web if needed
+4. **Recovers from failures** : replans up to 2 times if a tool step fails
+5. **Synthesises an answer** : with exact file names, function names, and working code
+6. **Saves to memory** : the next time this error appears, the answer is already known
 
 ### Why this is different
 
@@ -198,7 +198,7 @@ pip install -r requirements.txt
 
 ```bash
 cp .env.example .env
-# The defaults work for local development — no changes needed
+# The defaults work for local development : no changes needed
 ```
 
 `.env.example` contents:
@@ -235,8 +235,8 @@ Total chunks: 228
 'project_docs' → 228 chunks
 
 Sample chunks:
-  [python  ] agent/nodes.py:planning_node — def planning_node(state: AgentState) ...
-  [python  ] agent/tools.py:search_docs — @tool def search_docs(query: str) ...
+  [python  ] agent/nodes.py:planning_node : def planning_node(state: AgentState) ...
+  [python  ] agent/tools.py:search_docs : @tool def search_docs(query: str) ...
 ```
 
 ---
@@ -245,7 +245,7 @@ Sample chunks:
 
 ### Development mode (3 terminals)
 
-**Terminal 1 — API server:**
+**Terminal 1 : API server:**
 ```bash
 source venv/bin/activate   # or .\venv\Scripts\Activate.ps1 on Windows
 uvicorn api.main:app --host 0.0.0.0 --port 8000 --reload
@@ -259,14 +259,14 @@ Wait for:
 INFO: Application startup complete.
 ```
 
-**Terminal 2 — Streamlit UI:**
+**Terminal 2 : Streamlit UI:**
 ```bash
 source venv/bin/activate
 streamlit run ui/app.py
 # Opens at http://localhost:8501
 ```
 
-**Terminal 3 (optional) — MCP server:**
+**Terminal 3 (optional) : MCP server:**
 ```bash
 source venv/bin/activate
 python mcp_server/server.py
@@ -505,10 +505,10 @@ Enterprise codebases cannot send proprietary source code to external APIs. Ollam
 The index is built using raw ChromaDB inserts with custom metadata. LlamaIndex's `ChromaVectorStore` wrapper expects its own internal node format (`_node_content`, `_node_type`) and returns 0 results when reading externally-inserted embeddings. Direct queries against the collection are faster, simpler, and always work.
 
 **Why tree-sitter instead of fixed-token chunking?**
-Fixed-token chunking splits functions in half. A search for `planning_node` can return the bottom half of `execution_node` followed by the top half of `planning_node` — neither is usable. Tree-sitter parses the AST and chunks at function/class boundaries, so every chunk is a complete, semantically meaningful unit.
+Fixed-token chunking splits functions in half. A search for `planning_node` can return the bottom half of `execution_node` followed by the top half of `planning_node` : neither is usable. Tree-sitter parses the AST and chunks at function/class boundaries, so every chunk is a complete, semantically meaningful unit.
 
 **Why LLM-as-judge for evaluation?**
-Keyword matching counts `"memory exhausted"` as 0 against a test case expecting `"out of memory"`. The local Ollama model judges semantic correctness, handling synonyms, paraphrasing, and partial answers — giving a metric that can actually be defended.
+Keyword matching counts `"memory exhausted"` as 0 against a test case expecting `"out of memory"`. The local Ollama model judges semantic correctness, handling synonyms, paraphrasing, and partial answers : giving a metric that can actually be defended.
 
 ---
 
