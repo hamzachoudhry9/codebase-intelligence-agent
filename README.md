@@ -1,4 +1,4 @@
-# ◈ Codebase Intelligence Agent
+# Codebase Intelligence Agent
 
 > A fully local, offline AI agent that ingests any software repository, understands it at the function level, and lets engineers query it conversationally. Zero cloud APIs. Zero data exposure.
 
