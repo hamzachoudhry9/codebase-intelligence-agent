@@ -1,0 +1,12 @@
+chroma_db/
+__pycache__/
+*.pyc
+*.pyo
+.env
+*.egg-info
+.git
+.venv
+venv
+node_modules
+eval/results*.json
+data/stackoverflow_qa.json
