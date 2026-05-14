@@ -514,10 +514,10 @@ Keyword matching counts `"memory exhausted"` as 0 against a test case expecting 
 
 ## License
 
-MIT
+Mohammad Hamza Choudhry
 
 ---
 
-## Author
+## Application:
 
 Built as a demonstration of production-grade agentic AI systems for enterprise developer productivity use cases.
