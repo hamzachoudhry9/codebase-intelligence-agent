@@ -514,7 +514,7 @@ Keyword matching counts `"memory exhausted"` as 0 against a test case expecting 
 
 ## License
 
-Mohammad Hamza Choudhry
+MIT
 
 ---
 
